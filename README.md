@@ -7,7 +7,7 @@ Network discovery for [Mirror](https://github.com/vis2k/Mirror) based on [in0fin
 
 - Simple. Still < 600 lines of code.
 
-- Shattered the code up into more modular scripts, sorted code parameters and methods to single convention, rewrote method and variable names to hopefully make more self descriptive.
+- Shattered the code up into more modular scripts, reduced number of variables and static elements focusing more in singleton design, rewrote method and variable names to hopefully make them more self descriptive.
 
 - Uses C#'s UDP sockets for broadcasting and sending responses.
 
@@ -21,7 +21,7 @@ Network discovery for [Mirror](https://github.com/vis2k/Mirror) based on [in0fin
 
 - Has support for custom response data, with extensible broadcast packet.
 
-- Same style of behaviour as master branch but with more rigid convention and fewer static behaviour.
+- Same style of behaviour as in0finite's setup (client broadcasts, server listens) so efficiency should remain high.
 
 - Prevent detection of multiple localhost servers (by assigning GUID to each packet).
 
@@ -33,13 +33,13 @@ For more details on how to use it, check out NetworkDiscoveryHUD script.
 
 NetworkDiscovery script contains three public methods that drive everything:
         
-	// I call this from my NetworkManage::OnStartServer
+	    // I call this from my NetworkManage::OnStartServer
         public bool ServerPassiveBroadcastGame(byte[] serverBroadcastPacket)
 		
-	// I call this when the Lobby screen is loaded in my game, it causes clients to periodically broadcast a message for any listening servers to respond to
+	    // I call this when the Lobby screen is loaded in my game, it causes clients to periodically broadcast a message for any listening servers to respond to
         public bool ClientRunActiveDiscovery()
 		
-	// I call this when I leave the lobby menu and in my override of NetworkManager::OnStopServer (not done consistently via the simple HUD as wanted to avoid adding NetworkManager override to sample)
+	    // I call this when I leave the lobby menu and in my override of NetworkManager::OnStopServer (not done consistently via the simple HUD as wanted to avoid adding NetworkManager override to sample)
         public void StopDiscovery() {
 
 ## Optional TODO's that were beyond my scope of interest
