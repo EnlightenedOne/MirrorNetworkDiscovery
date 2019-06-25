@@ -1,7 +1,7 @@
 
 ## MirrorNetworkDiscovery
 
-Network discovery for [Mirror](https://github.com/vis2k/Mirror).
+Network discovery for [Mirror](https://github.com/vis2k/Mirror) based on [in0finite's version](https://github.com/in0finite/MirrorNetworkDiscovery).
 
 ## Features
 
