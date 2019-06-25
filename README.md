@@ -32,13 +32,14 @@ Attach NetworkDiscovery script (and for testing NetworkDiscoveryHUD script!) to 
 For more details on how to use it, check out NetworkDiscoveryHUD script.
 
 NetworkDiscovery script contains three public methods that drive everything:
-        // I call this from my NetworkManage::OnStartServer
+        
+	// I call this from my NetworkManage::OnStartServer
         public bool ServerPassiveBroadcastGame(byte[] serverBroadcastPacket)
 		
-		// I call this when the Lobby screen is loaded in my game, it causes clients to periodically broadcast a message for any listening servers to respond to
+	// I call this when the Lobby screen is loaded in my game, it causes clients to periodically broadcast a message for any listening servers to respond to
         public bool ClientRunActiveDiscovery()
 		
-		// I call this when I leave the lobby menu and in my override of NetworkManager::OnStopServer (not done consistently via the simple HUD as wanted to avoid adding NetworkManager override to sample)
+	// I call this when I leave the lobby menu and in my override of NetworkManager::OnStopServer (not done consistently via the simple HUD as wanted to avoid adding NetworkManager override to sample)
         public void StopDiscovery() {
 
 ## Optional TODO's that were beyond my scope of interest
