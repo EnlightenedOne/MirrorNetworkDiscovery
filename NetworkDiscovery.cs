@@ -35,8 +35,10 @@ namespace Mirror {
         UdpClient serverUdpClient = null;
         UdpClient clientUdpClient = null;
 
+        // This is a list of the NIC's found on start-up, I restart the client when the lobby screen loads and am not worried about refreshing this periodically
         IPAddress[] cachedIPs = null;
 
+        // This is a cached copy of the current state of the servers game available for broadcast when a client calls the server
         byte[] serverBroadcastPacket;
 
         void Awake() {
@@ -82,6 +84,11 @@ namespace Mirror {
             StartCoroutine(ServerListenCoroutine());
 
             return true;
+        }
+
+        // I call this when my network manager acquires new players or other game state changes occur that I want to display in the lobby screen
+        public void UpdateServerBroadcastPacket(byte[] serverBroadcastPacket) {
+            this.serverBroadcastPacket = serverBroadcastPacket;
         }
 
         // I call this when the Lobby screen is loaded in my game
