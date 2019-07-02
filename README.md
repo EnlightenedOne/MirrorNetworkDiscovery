@@ -25,7 +25,7 @@ Network discovery for [Mirror](https://github.com/vis2k/Mirror) based on [in0fin
 
 - Prevent detection of multiple localhost servers (by assigning GUID to each packet).
 
-- Binary payload being sent handled in a central message type outside of the NetworkDiscovery code (and not re-serialized on every Update)
+- Binary payload being sent handled in a central message type outside of the NetworkDiscovery code (and not re-serialized on every NetworkDiscovery::Update)
 
 - Signature agnostic of the application version (so you can show lobbys you cant join due to a version mismatch), simplified/optimised handshake
 
@@ -33,7 +33,7 @@ Network discovery for [Mirror](https://github.com/vis2k/Mirror) based on [in0fin
 
 - Made client send messages aysnc (not changed any other area to minimise complexity), this has the benefit that a local server captures and processes the messages on varying NIC's so tightly that my visuals dont flicker between NIC IPs (although this is quite a lazy solution!)
 
-- Shattered the code up into more modular scripts, reduced number of variables and static elements focusing more in singleton design, rewrote method and variable names to hopefully make them more self descriptive.
+- Shattered the code up into more modular scripts, reduced number of variables and static elements focusing more on singleton design, rewrote method and variable names to hopefully make them more self descriptive.
 
 - Internalised the client side logic used to repeatedly poll the network to discover clients
 
@@ -58,7 +58,7 @@ NetworkDiscovery script contains four public methods that drive everything:
 	    // I call this when I leave the lobby menu and in my override of NetworkManager::OnStopServer (not done consistently via the simple HUD as wanted to avoid adding NetworkManager override to sample)
         public void StopDiscovery() {
 
-		// I call this when my network manager acquires new players or other game state changes occur that I want to display in the lobby screen
+	    // I call this when my network manager acquires new players or other game state changes occur that I want to display in the lobby screen
         public void UpdateServerBroadcastPacket(byte[] serverBroadcastPacket)
 
 ## Optional TODO's that were beyond my scope of interest
