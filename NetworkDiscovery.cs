@@ -24,11 +24,14 @@ namespace Mirror {
         public string serverId { get; } = Guid.NewGuid().ToString();
 
         // Change the text to make your game distinct from any other network traffic (this is the signature)
-        private byte[] handshakeData = ByteStreamer.StreamToBytes("IAmAnExperimentalTeapotWith6FacetsOfTruth");
+        [HideInInspector]
+        public byte[] handshakeData { get; set; } = ByteStreamer.StreamToBytes("IAmAnExperimentalTeapotWith6FacetsOfTruth");
 
+        // This is the port the server will listen on and the port the client will multi-cast on
         [SerializeField]
         int m_serverBroadcastListenPort = 47777;
 
+        // This is the frequency in seconds at which the client will multi-cast out to all network interfaces to discover a server
         [SerializeField]
         int m_ActiveDiscoverySecondInterval = 3;
 
